@@ -1,4 +1,11 @@
-let NERDTreeIgnore = ['^node_modules$', '\.pyc$', '__pycache__']
+" Nerdtree
+nnoremap <leader>n :NERDTreeToggle<CR>
+
+" Python
+"
+" " the ignore patterns are regular expression strings and seprated by comma
+let NERDTreeIgnore = ['^node_modules$', '\.pyc$', '^__pycache__$']
+
 
 let NERDTreeMinimalUI=1
 let NERDTreeDirArrows=1
@@ -25,4 +32,3 @@ autocmd VimEnter * call StartUp()
 " ctrlp
 let g:ctrlp_user_commnand = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
-

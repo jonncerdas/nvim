@@ -20,6 +20,3 @@ imap <C-v> <ESC>"+pa
 " duplicate line
 nmap <leader>d :t.<CR>
 
-" nerdtree
-map <silent> <C-n> :call NERDTreeToggle()<CR>
-
