@@ -51,4 +51,5 @@ set hidden
 set history=1000
 set nomodeline
 set spell
+set relativenumber
 
