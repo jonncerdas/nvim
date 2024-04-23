@@ -20,3 +20,4 @@ imap <C-v> <ESC>"+pa
 " duplicate line
 nmap <leader>d :t.<CR>
 
+inoremap jj <Esc>
