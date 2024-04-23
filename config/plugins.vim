@@ -6,5 +6,10 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'morhetz/gruvbox'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'jistr/vim-nerdtree-tabs'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
+    Plug 'majutsushi/tagbar'
+    Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }    
+
 
 call plug#end()

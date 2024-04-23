@@ -20,4 +20,10 @@ imap <C-v> <ESC>"+pa
 " duplicate line
 nmap <leader>d :t.<CR>
 
+" ctrlP
+let g:ctrlp_map = '<C-p>'
+
+" TagbarToggle
+map <leader>t :TagbarToggle<CR>
+
 inoremap jj <Esc>
