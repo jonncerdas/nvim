@@ -26,3 +26,4 @@ let g:ctrlp_map = '<C-p>'
 " TagbarToggle
 map <leader>t :TagbarToggle<CR>
 
+inoremap jj <Esc>
