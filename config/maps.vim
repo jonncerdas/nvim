@@ -27,3 +27,12 @@ let g:ctrlp_map = '<C-p>'
 map <leader>t :TagbarToggle<CR>
 
 inoremap jj <Esc>
+
+" CopilotChat
+nnoremap <leader>cc :CopilotChat<CR>
+nnoremap <leader>ce :CopilotChatExplain<CR>
+nnoremap <leader>cf :CopilotChatFix<CR>
+nnoremap <leader>ct :CopilotChatTests<CR>
+
+" Cheatsheet
+nnoremap <leader>? :Cheatsheet<CR>

@@ -11,5 +11,9 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }    
 
+    Plug 'github/copilot.vim'
+    Plug 'nvim-lua/plenary.nvim'
+    Plug 'CopilotC-Nvim/CopilotChat.nvim'
+
 
 call plug#end()
