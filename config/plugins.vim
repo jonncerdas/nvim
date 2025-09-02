@@ -14,7 +14,8 @@ call plug#begin('~/.config/nvim/plugged')
 
     Plug 'github/copilot.vim'
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'CopilotC-Nvim/CopilotChat.nvim'
+    Plug 'MunifTanjim/nui.nvim'
+    Plug 'CopilotC-Nvim/CopilotChat.nvim', { 'on': ['CopilotChat', 'CopilotChatOpen', 'CopilotChatVisual', 'CopilotChatExplain', 'CopilotChatFix', 'CopilotChatTests'] }
 
 
 call plug#end()
