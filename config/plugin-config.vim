@@ -73,20 +73,27 @@ let g:copilot_filetypes = {
 lua << EOF
 local ok, chat = pcall(require, 'CopilotChat')
 if ok then
-  chat.setup({ })
+  if not chat._configured then
+    chat.setup({ })
+    chat._configured = true
+  end
 end
-EOF
 
-lua << EOF
 function _G.CopilotChatOpenTolerant()
-  local ok, m = pcall(require, 'CopilotChat')
-  if ok and type(m.open) == 'function' then
-    m.open()
-  else
-    local ok2 = pcall(vim.cmd, 'CopilotChatOpen')
-    if not ok2 then
-      pcall(vim.cmd, 'CopilotChat')
+  local ok2, m = pcall(require, 'CopilotChat')
+  if ok2 then
+    if not m._configured then
+      pcall(m.setup, {})
+      m._configured = true
     end
+    if type(m.open) == 'function' then
+      m.open()
+      return
+    end
+  end
+  local ok3 = pcall(vim.cmd, 'CopilotChatOpen')
+  if not ok3 then
+    pcall(vim.cmd, 'CopilotChat')
   end
 end
 EOF
