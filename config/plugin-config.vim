@@ -76,3 +76,17 @@ if ok then
   chat.setup({ })
 end
 EOF
+
+lua << EOF
+function _G.CopilotChatOpenTolerant()
+  local ok, m = pcall(require, 'CopilotChat')
+  if ok and type(m.open) == 'function' then
+    m.open()
+  else
+    local ok2 = pcall(vim.cmd, 'CopilotChatOpen')
+    if not ok2 then
+      pcall(vim.cmd, 'CopilotChat')
+    end
+  end
+end
+EOF

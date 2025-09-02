@@ -29,7 +29,7 @@ map <leader>t :TagbarToggle<CR>
 inoremap jj <Esc>
 
 " CopilotChat
-nnoremap <silent> <leader>cc <cmd>lua local ok,m=pcall(require,'CopilotChat'); if ok and m.open then m.open() else (pcall(vim.cmd,'CopilotChatOpen') or pcall(vim.cmd,'CopilotChat')) end<CR>
+nnoremap <silent> <leader>cc :lua CopilotChatOpenTolerant()<CR>
 nnoremap <leader>ce :CopilotChatExplain<CR>
 nnoremap <leader>cf :CopilotChatFix<CR>
 nnoremap <leader>ct :CopilotChatTests<CR>
