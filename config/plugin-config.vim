@@ -30,7 +30,9 @@ endfunction
 
 function! StartUp()
     if 0 == argc()
+        enew
         NERDTree
+        wincmd p
     end
 endfunction
 autocmd VimEnter * call StartUp()
@@ -50,6 +52,7 @@ if ok then
       show_buffer_close_icons = false,
       show_close_icon = false,
       diagnostics = false,
+      always_show_bufferline = true,
       offsets = {
         { filetype = 'nerdtree', text = 'File Explorer', text_align = 'left', separator = true },
         { filetype = 'tagbar', text = 'Tags', text_align = 'left', separator = true },
