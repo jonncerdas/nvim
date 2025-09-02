@@ -9,7 +9,8 @@ call plug#begin('~/.config/nvim/plugged')
     Plug 'airblade/vim-gitgutter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
     Plug 'majutsushi/tagbar'
-    Plug 'akinsho/bufferline.nvim', { 'tag': 'v2.*' }    
+    Plug 'akinsho/bufferline.nvim'
+    Plug 'nvim-tree/nvim-web-devicons'
 
     Plug 'github/copilot.vim'
     Plug 'nvim-lua/plenary.nvim'

@@ -110,6 +110,11 @@ On startup, if no file is provided, NERDTree opens automatically. The toggle is 
 
 `bufferline.nvim` v2 is enabled with a minimal setup and requires truecolor: `set termguicolors`.
 
+If you see a startup error related to Bufferline, update plugins and ensure devicons is installed:
+
+- Run `:PlugUpdate`
+- Ensure `nvim-tree/nvim-web-devicons` is installed (declared in plugins)
+
 ## CtrlP
 
 CtrlP mapping is `Ctrl-p`. Ignore patterns include `node_modules`, `.DS_Store`, and `git`.

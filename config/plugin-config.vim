@@ -43,7 +43,20 @@ let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
 " In your init.lua or init.vim
 set termguicolors
 lua << EOF
-require("bufferline").setup{}
+local ok, bufferline = pcall(require, 'bufferline')
+if ok then
+  bufferline.setup({
+    options = {
+      show_buffer_close_icons = false,
+      show_close_icon = false,
+      diagnostics = false,
+      offsets = {
+        { filetype = 'nerdtree', text = 'File Explorer', text_align = 'left', separator = true },
+        { filetype = 'tagbar', text = 'Tags', text_align = 'left', separator = true },
+      },
+    },
+  })
+end
 EOF
 
 " Copilot
