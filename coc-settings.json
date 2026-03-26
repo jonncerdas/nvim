@@ -1,0 +1,28 @@
+{
+  "suggest.noselect": false,
+  "suggest.enablePreselect": true,
+
+  "coc.preferences.formatOnSave": true,
+
+  "python.linting.enabled": true,
+  "python.linting.ruffEnabled": true,
+  "python.formatting.provider": "ruff",
+  "pyright.organizeimports.provider": "ruff",
+
+  "eslint.autoFixOnSave": true,
+
+  "prettier.enable": true,
+  "prettier.formatOnSaveMode": "file",
+
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+
+  "volar.completion.autoImport": true,
+  "volar.autoCompleteRefs": true,
+
+  "emmet.includeLanguages": {
+    "vue-html": "html",
+    "vue": "html"
+  }
+}

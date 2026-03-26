@@ -20,19 +20,21 @@ imap <C-v> <ESC>"+pa
 " duplicate line
 nmap <leader>d :t.<CR>
 
-" ctrlP
-let g:ctrlp_map = '<C-p>'
+" Telescope
+nnoremap <C-p> :Telescope find_files<CR>
+nnoremap <leader>ff :Telescope find_files<CR>
+nnoremap <leader>fg :Telescope live_grep<CR>
+nnoremap <leader>fb :Telescope buffers<CR>
+nnoremap <leader>fh :Telescope help_tags<CR>
 
 " TagbarToggle
 map <leader>t :TagbarToggle<CR>
 
 inoremap jj <Esc>
 
-" CopilotChat
-nnoremap <leader>cc :CopilotChat<CR>
-nnoremap <leader>ce :CopilotChatExplain<CR>
-nnoremap <leader>cf :CopilotChatFix<CR>
-nnoremap <leader>ct :CopilotChatTests<CR>
+" Terminal (opens at bottom)
+nnoremap <leader><CR> :botright split \| terminal<CR>
+nnoremap <leader>` :botright split \| terminal<CR>
 
 " Cheatsheet
 nnoremap <leader>? :Cheatsheet<CR>

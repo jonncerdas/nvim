@@ -1,20 +1,33 @@
 call plug#begin('~/.config/nvim/plugged')
 
+    " File explorer & UI
     Plug 'preservim/nerdtree'
-    Plug 'projekt0n/github-nvim-theme'
-    Plug 'ctrlpvim/ctrlp.vim'
-    Plug 'morhetz/gruvbox'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'jistr/vim-nerdtree-tabs'
-    Plug 'airblade/vim-gitgutter'
     Plug 'Xuyuanp/nerdtree-git-plugin'
-    Plug 'majutsushi/tagbar'
-    Plug 'akinsho/bufferline.nvim'
     Plug 'nvim-tree/nvim-web-devicons'
+    Plug 'akinsho/bufferline.nvim'
+    Plug 'majutsushi/tagbar'
 
-    Plug 'github/copilot.vim'
+    " Themes
+    Plug 'projekt0n/github-nvim-theme'
+    Plug 'morhetz/gruvbox'
+
+    " Search
     Plug 'nvim-lua/plenary.nvim'
-    Plug 'CopilotC-Nvim/CopilotChat.nvim'
+    Plug 'nvim-telescope/telescope.nvim'
 
+    " Git
+    Plug 'airblade/vim-gitgutter'
+
+    " LSP & Completion
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+    " Syntax highlighting
+    Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+    " Editing helpers
+    Plug 'windwp/nvim-autopairs'
+    Plug 'numToStr/Comment.nvim'
+    Plug 'tpope/vim-surround'
 
 call plug#end()

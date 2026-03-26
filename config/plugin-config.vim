@@ -37,9 +37,49 @@ function! StartUp()
 endfunction
 autocmd VimEnter * call StartUp()
 
-" ctrlp
-let g:ctrlp_user_commnand = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git'
+" Telescope
+lua << EOF
+local ok, telescope = pcall(require, 'telescope')
+if ok then
+  telescope.setup({
+    defaults = {
+      file_ignore_patterns = { "node_modules", ".git" },
+    },
+  })
+end
+EOF
+
+" Treesitter
+lua << EOF
+local ok, treesitter = pcall(require, 'nvim-treesitter.configs')
+if ok then
+  treesitter.setup({
+    ensure_installed = {
+      "javascript", "typescript", "tsx", "vue",
+      "python", "json", "html", "css", "scss",
+      "lua", "vim", "vimdoc", "bash", "markdown"
+    },
+    highlight = { enable = true },
+    indent = { enable = true },
+  })
+end
+EOF
+
+" Autopairs
+lua << EOF
+local ok, autopairs = pcall(require, 'nvim-autopairs')
+if ok then
+  autopairs.setup({})
+end
+EOF
+
+" Comment.nvim
+lua << EOF
+local ok, comment = pcall(require, 'Comment')
+if ok then
+  comment.setup({})
+end
+EOF
 
 " BufferLine
 " In your init.lua or init.vim
@@ -62,17 +102,75 @@ if ok then
 end
 EOF
 
-" Copilot
-let g:copilot_no_tab_map = v:true
-imap <silent><script><expr> <C-j> copilot#Accept("\<CR>")
-let g:copilot_filetypes = {
-\  '*': v:true,
-\}
+" ============================================================================
+" CoC (Conquer of Completion) Configuration
+" ============================================================================
 
-" CopilotChat minimal setup
-lua << EOF
-local ok, chat = pcall(require, 'CopilotChat')
-if ok then
-  chat.setup({ })
-end
-EOF
+" Use Tab for trigger completion
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+" Enter to confirm completion
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+      \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Trigger completion with Ctrl+Space
+inoremap <silent><expr> <C-Space> coc#refresh()
+
+" Navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Show documentation
+nnoremap <silent> K :call ShowDocumentation()<CR>
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
+
+" Rename symbol
+nmap <leader>rn <Plug>(coc-rename)
+
+" Format code
+nmap <leader>fm <Plug>(coc-format)
+vmap <leader>fm <Plug>(coc-format-selected)
+
+" Code actions
+nmap <leader>ca <Plug>(coc-codeaction-cursor)
+nmap <leader>cf <Plug>(coc-fix-current)
+
+" Diagnostics navigation
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
+
+" Show all diagnostics
+nnoremap <silent> <leader>cd :CocList diagnostics<CR>
+
+" Organize imports
+nmap <leader>oi :call CocAction('runCommand', 'editor.action.organizeImport')<CR>
+
+" CoC extensions to install (auto-installs on startup)
+let g:coc_global_extensions = [
+      \ 'coc-tsserver',
+      \ '@yaegassy/coc-volar',
+      \ 'coc-eslint',
+      \ 'coc-prettier',
+      \ 'coc-pyright',
+      \ 'coc-json',
+      \ 'coc-html',
+      \ 'coc-css',
+      \ 'coc-emmet',
+      \ ]
