@@ -182,17 +182,32 @@ tnoremap <leader><Right> <C-\><C-n>:wincmd l<CR>
 autocmd BufEnter term://* startinsert
 autocmd WinEnter term://* startinsert
 
-" Resize splits with Ctrl + arrow keys
-nnoremap <C-Up> :resize +3<CR>
-nnoremap <C-Down> :resize -3<CR>
-nnoremap <C-Left> :vertical resize -3<CR>
-nnoremap <C-Right> :vertical resize +3<CR>
+" Resize splits with ;= and ;- (height) and ;. and ;, (width)
+nnoremap <leader>= :resize +5<CR>
+nnoremap <leader>- :resize -5<CR>
+nnoremap <leader>. :vertical resize +5<CR>
+nnoremap <leader>, :vertical resize -5<CR>
 
 " Also work from terminal mode
-tnoremap <C-Up> <C-\><C-n>:resize +3<CR>i
-tnoremap <C-Down> <C-\><C-n>:resize -3<CR>i
-tnoremap <C-Left> <C-\><C-n>:vertical resize -3<CR>i
-tnoremap <C-Right> <C-\><C-n>:vertical resize +3<CR>i
+tnoremap <leader>= <C-\><C-n>:resize +5<CR>i
+tnoremap <leader>- <C-\><C-n>:resize -5<CR>i
+tnoremap <leader>. <C-\><C-n>:vertical resize +5<CR>i
+tnoremap <leader>, <C-\><C-n>:vertical resize -5<CR>i
+
+" Git (vim-fugitive)
+nnoremap <leader>gs :Git<CR>
+nnoremap <leader>ga :Git add %<CR>
+nnoremap <leader>gc :Git commit<CR>
+nnoremap <leader>gp :Git push<CR>
+nnoremap <leader>gl :Git pull<CR>
+nnoremap <leader>gd :Gdiffsplit<CR>
+nnoremap <leader>gb :Git blame<CR>
+nnoremap <leader>gL :Git log --oneline<CR>
+nnoremap <leader>gr :Git rebase -i<CR>
+nnoremap <leader>gS :Git stash<CR>
+nnoremap <leader>gSp :Git stash pop<CR>
+nnoremap <leader>gSl :Git stash list<CR>
+nnoremap <leader>gcp :Git cherry-pick<Space>
 
 " Cheatsheet
 nnoremap <leader>? :Cheatsheet<CR>
