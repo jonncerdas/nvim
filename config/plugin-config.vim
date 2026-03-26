@@ -97,6 +97,14 @@ if ok then
         { filetype = 'nerdtree', text = 'File Explorer', text_align = 'left', separator = true },
         { filetype = 'tagbar', text = 'Tags', text_align = 'left', separator = true },
       },
+      custom_filter = function(buf_number)
+        -- Hide terminal buffers from bufferline
+        local buf_type = vim.bo[buf_number].buftype
+        if buf_type == 'terminal' then
+          return false
+        end
+        return true
+      end,
     },
   })
 end
